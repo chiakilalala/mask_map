@@ -5,6 +5,7 @@ $color_scroll:#63A1CB;
 $scroll_bg:#F5F5F5;
 $select_color:#f5f6f7;
 $boxshadow:#f2f2f2;
+$text-white:#e2e2e2;
 $bg_ornage:#eb7b55;
 ::-webkit-scrollbar-track {
     background-color: $scroll_bg;
@@ -82,11 +83,15 @@ body {
             margin-right: 3px
         }
     }
+    .time {
+        color: #8c9196;
+        font-size: 12px;
+    }
     .container {
         background: #5669b6;
         position: relative;
         margin: .5rem;
-        padding: 0 1rem;
+        padding: 0.5rem 1rem;
         border-radius: 1rem;
         width: 8rem;
         line-height: 1.2;
@@ -95,9 +100,22 @@ body {
         p {
             margin: 0;
             font-size: pxTorem(14px);
-            padding: 10px 0px;
+            padding: 5px 0px;
             display: inline-block;
         }
+    }
+    /*color*/
+    .bg--nice {
+        background: #5376b5;
+        color: $white;
+    }
+    .bg--danger {
+        background-color: #ef5f5b;
+        color: $white;
+    }
+    .bg--none {
+        background: $text-white;
+        color: #9c9c9c;
     }
 }
 
@@ -129,7 +147,7 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: 999;
     background: $color_panel;
     transition: all.5s;
 }
@@ -142,6 +160,29 @@ body {
     background: $color_panel;
     //dark
     box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.mask_list {
+    display: flex;
+    li {
+        cursor: pointer;
+        border-radius: 4px;
+        // border: 1px solid #eaeaea;
+        padding: 9px 10px;
+        color: $dark;
+        width: 28%;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 11px;
+        list-style: none;
+        &.active {
+            color: $white;
+            background: $bg_ornage;
+            display: inline-block;
+            position: relative;
+            box-shadow: -4px -2px 4px 0px #f2f2f2, 4px 2px 6px 0px #DFE4EA;
+        }
+    }
 }
 
 // mask_num
@@ -259,6 +300,9 @@ body {
     border-radius: pxTorem(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin-bottom: pxTorem(12px);
+    p {
+        margin-bottom: 5px;
+    }
 }
 
 .eumorphism {
@@ -275,7 +319,6 @@ body {
         border-radius: 5px;
         margin-right: pxTorem(1px);
         width: 49%;
-        background: #354561;
         border-radius: 0 pxTorem(5px)p xTorem(5px) 0;
         border: none;
         letter-spacing: 1px;
@@ -302,10 +345,65 @@ body {
         }
     }
     .child-mask {
-        color: #e2e2e2;
+        color: $text-white;
     }
     .no-mask {
-        background: #e2e2e2;
+        background: $text-white;
         color: #9c9c9c;
+    }
+    /*color*/
+    .bg--nice {
+        background: #5376b5;
+        color: $white;
+    }
+    .bg--danger {
+        background-color: #ef5f5b;
+        color: $white;
+    }
+    .bg--none {
+        background: $text-white;
+        color: #9c9c9c;
+    }
+}
+
+// loader
+.loader {
+    font-family: "微軟正黑體", sans-serif;
+    position: fixed;
+    top: 50%;
+    bottom: 50%;
+    left: 0;
+    transform: translate(-50px, -50px);
+    right: 0;
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    z-index: 9999;
+    .loader-spin {
+        width: pxTorem(60px);
+        height: pxTorem(60px);
+        border-radius: 50%;
+        border: 7px solid rgba(255, 255, 255, 0.3);
+        border-top: 7px solid #FC4B65;
+        animation: spin 0.7s ease-out infinite;
+        margin: 20px 30px;
+    }
+    .loader-txt {
+        width: 100%;
+        padding-left: 0.3em;
+        text-align: center;
+        font-weight: 600;
+        color: #4A4A4A;
+        font-size: 18px;
+        font-size: 1.125rem;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

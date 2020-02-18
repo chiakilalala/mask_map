@@ -1,13 +1,13 @@
     /*var myMap = L.map('map', {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                center: [22.595551, 120.306945],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                center: [22.595551, 120.306945],
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                zoom: 15
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                zoom: 15
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
     // 跟第一行是同樣效果的是建立流程不同
     window.onload = function() {
 
-
+        loader();
         getTime();
         //下拉選單
         let citySearch = document.querySelector('.city-search');
@@ -75,20 +75,15 @@
         xhr.open("GET", "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json", true);
         xhr.send();
         xhr.addEventListener('load', function() {
+            loaderDone();
             var data = JSON.parse(this.responseText).features;
             var list = document.querySelector('.e-search-body-scroll');
             var str = '';
-
-
-            selectCountry();
             getList('大安區', '臺北市');
-
-
-
+            selectCountry();
 
             //篩選重複的市----
-
-            /*  下拉選單*/
+            //下拉選單-------
             function selectCountry() {
                 let country;
                 let CountryList = [];
@@ -100,7 +95,7 @@
                 country = CountryList.filter(function(value, index, arr) {
                     return arr.indexOf(value) === index;
                 });
-                // console.log(country);
+
                 updateSelect(country);
             }
             // console.log(country);
@@ -121,28 +116,36 @@
             function selectZone(e) {
 
                 let val = e.target.value;
+                // console.log(val);
                 let str = `<option value="">-- 請選擇鄉鎮區 --</option>`;
                 let ZoneList = [];
                 let Newzone = '';
                 for (let i = 0; i < data.length; i++) {
+                    // console.log(data[i].properties.county);
                     let forCounty = data[i].properties.county;
+                    // console.log(val, forCounty);
                     if (val == forCounty) {
-                        ZoneList.push({ district: data[i].properties.town });
+                        // ZoneList.push({ district: data[i].properties.town });
+                        ZoneList.push(data[i].properties.town);
 
                     }
                     // console.log(ZoneList);
                 }
 
-                Newzone = ZoneList.filter(function(value, index, arr) {
-                    return arr.indexOf(value) !== index;
-                });
-                console.log(Newzone);
-                for (let i = 0; i < ZoneList.length; i++) {
-                    str += `<option value="${ZoneList[i].district}">${ZoneList[i].district}</option>`
+                Newzone = new Set(ZoneList);
+                // console.log(Newzone);
+                Newzone = Array.from(Newzone);
+                // console.log(Newzone);
+
+                // Newzone = ZoneList.filter(function(value, index, arr) {
+                //     return arr.indexOf(value) !== index;
+                // });
+                // console.log(Newzone);
+                for (let i = 0; i < Newzone.length; i++) {
+                    str += `<option value="${Newzone[i]}">${Newzone[i]}</option>`
                 }
 
                 distSearch.innerHTML = str;
-
                 distSearch.addEventListener('change', getlocationView);
 
             }
@@ -154,10 +157,10 @@
             };
             //篩選重複的區>setview=======================
             function getlocationView(e) {
-
                 let zone = e.target.value;
-                let country = '';
                 let latlng = [];
+                let country = '';
+
                 // let latlng = [];
 
                 for (let i = 0; i < data.length; i++) {
@@ -165,13 +168,12 @@
                     let forcountry = data[i].properties.county;
                     let lat = data[i].geometry.coordinates[0]; //緯度
                     let lng = data[i].geometry.coordinates[1]; //經度
-                    let latlng = [];
-                    if (forTwon == zone && forcountry == citySearch.value) {
 
-                        latlng = [lng, lat];
-                        console.log(latlng);
+                    if (forTwon == zone && forcountry == citySearch.value) {
+                        latlng = [data[i].geometry.coordinates[1], data[i].geometry.coordinates[0]];
+                        // console.log(latlng);
                         country = data[i].properties.county;
-                        console.log(country);
+                        // console.log(country);
                     }
                 }
                 myMap.setView(latlng, 15);
@@ -184,17 +186,37 @@
             function getList(zone, country) {
                 let str = '';
                 for (var i = 0; i < data.length; i++) {
+                    let popAdult;
+                    let popChild;
+                    let m_adult = data[i].properties.mask_adult;
+                    let m_child = data[i].properties.mask_child;
+                    if (m_adult >= 50) {
+                        popAdult = 'bg--nice';
+                    } else if (m_adult < 50 && m_adult !== 0) {
+                        popAdult = 'bg--danger';
+                    } else {
+                        popAdult = 'bg--none';
+                    }
+                    if (m_child >= 50) {
+                        popChild = 'bg--nice';
+                    } else if (m_child < 50 && m_child !== 0) {
+                        popChild = 'bg--danger';
+
+                    } else {
+                        popChild = 'bg--none';
+                    }
+
                     if (data[i].properties.address.indexOf(country && zone) != -1) {
                         str += `<li class="pharmacy-wrap eumorphism">
                                     <h3 class="pharmacy-name">${data[i].properties.name} </h3>               
-                                    <p><i class="fas fa-map-marker-alt"></i> ${data[i].properties.address}</p> 
+                                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com.tw/maps/place/${data[i].properties.name}" class="address" target="_blank">${data[i].properties.address}</a></p> 
                                     <p><i class="fa fa-phone"></i> ${data[i].properties.phone}</p>
                                      <div class= "e-mask-wrap">
-                                    <div class= "mask adult-mask  no-mask"> 
+                                    <div class= "mask adult-mask  ${popAdult}"> 
                                     <img src= "img/boy.svg" alt ="成人口罩"class= "e-img mask-img">
                                     <p>:${data[i].properties.mask_adult } </p>
                                     </div>
-                                    <div class= "mask child-mask" >
+                                    <div class= "mask child-mask ${popChild}" >
                                     <img src= "img/baby.svg" alt = "兒童口罩"class= "e-img mask-img">
                                         <p>：${data[i].properties.mask_child }</p> 
                                     </div>
@@ -207,87 +229,61 @@
 
 
             //篩選重複的市----end
-
+            //判斷popup裡的btn顏色、marker顏色
             for (var i = 0; i < data.length; i++) {
-
-
+                var popAdult;
+                var popChild;
+                var mask_adult = data[i].properties.mask_adult;
+                var mask_child = data[i].properties.mask_child;
                 var mask;
-                if (data[i].properties.mask_adult == 0 || data[i].properties.mask_child == 0) {
-                    mask = blockIcon;
-                } else {
+
+                if (mask_adult + mask_child >= 100) {
                     mask = yellowIcon;
+                } else {
+                    mask = blockIcon;
+                }
+                if (mask_adult >= 50) {
+                    popAdult = 'bg--nice';
+                } else if (mask_adult < 50 && mask_adult != 0) {
+                    popAdult = 'bg--danger';
+                } else {
+                    popAdult = 'bg--none';
+                }
+                if (mask_child >= 50) {
+                    popChild = 'bg--nice';
+                } else if (mask_child < 50 && mask_child != 0) {
+                    popChild = 'bg--danger';
+                } else {
+                    popChild = 'bg--none';
                 }
                 markers.addLayer(L.marker([data[i].geometry.coordinates[1],
                         data[i].geometry.coordinates[0]
                     ], { icon: mask })
                     .bindPopup(` <div class="pop"><h3 class="pharmacy-name">${data[i].properties.name} </h3>
-                     <p class="detail"><i class="fas fa-map-marker-alt"></i>${data[i].properties.address}</p>
+                     <p class="detail"><i class="fas fa-map-marker-alt"></i>
+                     <a href="https://www.google.com.tw/maps/place/${data[i].properties.name}" class="address" target="_blank">${data[i].properties.address}</a></p>
                          <p class="detail"><i class="fa fa-phone"></i>${data[i].properties.phone}</p>
-                     <div class="store_statue">
-                    <div class="container">
+                     <p class="detail time">更新時間：${data[i].properties.updated == "" ? '無資料' : data[i].properties.updated.slice(5) }-- 以實際營業時間</p>
+                         <div class="store_statue">
+                    <div class="container ${popAdult}">
                     <p> 成人口罩數量</p>
-                      <p>${data[i].properties.mask_adult} 片</p></div>
-                    <div class="container">
+                      <p>${mask_adult} 片</p></div>
+                    <div class="container ${popChild}">
                      <p> 兒童口罩數量</p>    
-                        <p>${data[i].properties.mask_child}片</p></div>
+                        <p>${mask_child}片</p></div>
                         </div></div>`));
-
-                /*  下拉選單*/
-
+                // --以實際發放為準
 
 
             };
+            /*  下拉選單*/
 
 
             //事件重新載入
-            /*function creatLoad() {
-                var Newstr = '';
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].properties.county == '台北市' && data[i].properties.town == '大安區') {
-                        Newstr += `<li class="pharmacy-wrap eumorphism">
-                                    <h3 class="pharmacy-name">${data[i].properties.name} </h3>               
-                                    <p><i class="fas fa-map-marker-alt"></i> ${data[i].properties.address}</p> 
-                                    <p><i class="fa fa-phone"></i> ${data[i].properties.phone}</p>
-                                     <div class= "e-mask-wrap">
-                                    <div class= "mask adult-mask  no-mask"> 
-                                    <img src= "img/boy.svg" alt ="成人口罩"class= "e-img mask-img">
-                                    <p>:${data[i].properties.mask_adult } </p>
-                                    </div>
-                                    <div class= "mask child-mask" >
-                                    <img src= "img/baby.svg" alt = "兒童口罩"class= "e-img mask-img">
-                                        <p>：${data[i].properties.mask_child }</p> 
-                                    </div>
-                                </div>
-                                </li>`;
 
-
-                    }
-                    list.innerHTML = Newstr;
-                }
-
-            }
-
-            creatLoad();*/
 
             // 事件更新
-            // function updatelist(e) {
-            //     let select = e.target.value;
-            //     console.log(e.target.value);
-            //     let boxstr = '';
-            //     for (var y = 0; y < data.length; y++) {
-            //         if (select == data[y].properties.county) {
 
-            //             boxstr +=
-            //                 `<li class="pharmacy-wrap eumorphism">
-            //                         <h3 class="pharmacy-name">${data[y].properties.name} </h3>               
-
-            //                     </li>`;
-            //         }
-            //         list.innerHTML = boxstr;
-
-            //     }
-
-            // }
             // console.log(Zone);
 
             // console.log(Country);
@@ -324,47 +320,39 @@
                     idBuyDay = '偶數';
                     break;
                 case '星期日':
-                    idBuyDay = '不限'
+                    idBuyDay = '不限';
             }
-            let curentTime = nowYear + ' - ' + nowMonth + '- ' + nowDay;
+            let curentTime = nowYear + '-' + nowMonth + '-' + nowDay;
             let idDay = `身分證尾數<mark>${idBuyDay}購買日</mark>`;
             let dateTxt = `<p class="date">${curentTime}</p>
                              <h2>${weekdays[dt.getDay()]}</h2> 
                              <p class="e-verification"> ${idDay} </p>  `;
             let date = document.querySelector('.date'); //顯示時間的地方
             date.innerHTML = dateTxt;
+
+
+        }
+
+        /*loader*/
+        function loader() {
+            document.querySelector("body").style.overflow = "hidden";
+            document.querySelector("body").style.visibility = "hidden";
+            document.querySelector(".m-panel").style.zIndex = 0;
+            document.querySelector("#js--loader").style.visibility = "visible";
+        }
+
+        function loaderDone() {
+            document.querySelector("#js--loader").style.display = "none";
+            document.querySelector("body").style.visibility = "visible";
+            document.querySelector(".m-panel").style.zIndex = 999;
+            document.querySelector("body").style.overflow = "auto";
         }
 
 
 
 
 
-        // myPositionMarker.on("click", function() {
-        //     var pos = myMap.latLngToLayerPoint(myPositionMarker.getLatLng());
-        //     pos.y -= 25;
-        //     var fx = new L.PosAnimation();
 
-        //     fx.once('end', function() {
-        //         pos.y += 25;
-        //         fx.run(myPositionMarker._icon, pos, 0.8);
-        //     });
-
-        //     fx.run(myPositionMarker._icon, pos, 0.3);
-
-        // });
-        // 設定 icon
-
-
-        // L.marker([22.595823, 120.307460], { icon: greenIcon }).addTo(myMap)
-        //     .bindPopup('<h1>康是美藥局</h1><p>成人口罩：50<br>兒童口罩:50</p>');
-
-
-
-        //放入跳窗
-        // L.marker([22.594714, 120.305904]).addTo(myMap)
-        //     .bindPopup('<h1>測試藥局</h1><p>成人口罩：50<br>兒童口罩:50</p>');
-
-        /**/
 
 
     };

@@ -19,6 +19,18 @@
 </head>
 
 <body>
+    <div id="js--loader" class="loader">
+        <img src="./img/bg_load.svg" alt="">
+        <div class="loader-spin"></div>
+        <p class="loader-txt">清點口罩中</p>
+    </div>
+    <!-- <div class="legend">
+        <div class="sufficent"></div>
+        <div class="sufficent"></div>
+        <div class="sufficent"></div>
+        <div class="sufficent"></div>
+
+    </div> -->
     <div id="map">
         <div class="m-panel">
 
@@ -42,13 +54,17 @@
                 </select>
 
                 <div class="m-panel-total">
-                    <h3 class="">取得口罩數量的藥局有
-                        <span class="pharmacy-num">xxx 家</span></h3>
+
+                    <ul class="mask_list">
+                        <li class="active">所有口罩</li>
+                        <li class="js_filter">成人口罩</li>
+                        <li class="js_filter">兒童口罩</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="e-search-body">
-
+            <div nclass="e-search-body">
+                <!-- <span class="resultList"> 以下為${country}${zone}內的藥局 </span> -->
                 <ul class="e-search-body-scroll">
                     <!-- <li class="pharmacy-wrap eumorphism">
                         <h3 class="pharmacy-name">丁丁藥局</h3>
@@ -68,58 +84,7 @@
                         </div>
                     </li> -->
 
-                    <!-- <li class="pharmacy-wrap eumorphism">
-                        <h3 class="pharmacy-name">每日藥局</h3>
 
-                        <p><i class="fas fa-map-marker-alt"></i>桃園市桃園區瑞慶里莊一街80號</p>
-                        <p><i class="fa fa-phone"></i>03 -3175618</p>
-
-
-
-                        <div class="e-mask-wrap">
-                            <div class="mask adult-mask  no-mask"><img src="img/boy.svg" alt="成人口罩" class="e-img mask-img">
-                                <p>:0</p>
-                            </div>
-                            <div class="mask child-mask"><img src="img/baby.svg" alt="兒童口罩" class="e-img mask-img">
-                                <p>：45</p>
-                            </div>
-                        </div>
-                    </li> -->
-
-                    <!-- <li class="pharmacy-wrap eumorphism">
-                        <h3 class="pharmacy-name">每日藥局</h3>
-
-                        <p><i class="fas fa-map-marker-alt"></i>桃園市桃園區瑞慶里莊一街80號</p>
-                        <p><i class="fa fa-phone"></i>03 -3175618</p>
-
-
-
-                        <div class="e-mask-wrap">
-                            <div class="mask adult-mask  no-mask"><img src="img/boy.svg" alt="成人口罩" class="e-img mask-img">
-                                <p>:0</p>
-                            </div>
-                            <div class="mask child-mask"><img src="img/baby.svg" alt="兒童口罩" class="e-img mask-img">
-                                <p>：45</p>
-                            </div>
-                        </div>
-                    </li> -->
-                    <!-- <li class="pharmacy-wrap eumorphism">
-                        <h3 class="pharmacy-name">每日藥局</h3>
-
-                        <p><i class="fas fa-map-marker-alt"></i>桃園市桃園區瑞慶里莊一街80號</p>
-                        <p><i class="fa fa-phone"></i>03 -3175618</p>
-
-
-
-                        <div class="e-mask-wrap">
-                            <div class="mask adult-mask  no-mask"><img src="img/boy.svg" alt="成人口罩" class="e-img mask-img">
-                                <p>:0</p>
-                            </div>
-                            <div class="mask child-mask"><img src="img/baby.svg" alt="兒童口罩" class="e-img mask-img">
-                                <p>：45</p>
-                            </div>
-                        </div>
-                    </li> -->
                 </ul>
                 <button class="e-button-toggle js_toggle"> <i class="fas fa-angle-right"></i></button>
 

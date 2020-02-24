@@ -1,0 +1,75 @@
+ .wrap {
+     width: 600px;
+     margin: 0 auto;
+     background: #151C29;
+     margin: 100px auto;
+     padding: 1em;
+     text-align: center;
+     border-radius: 15px;
+ }
+ 
+ .img {
+     float: left;
+     width: 200px;
+ }
+ 
+ .content {
+     float: right;
+     width: 350px;
+     text-align: left;
+ }
+ 
+ .clearfix {
+     overflow: auto;
+     zoom: 1;
+ }
+ 
+ .list {
+     margin: 0;
+     padding: 50px 100px 100px 0;
+     text-align: left;
+     list-style: none;
+ }
+ 
+ .list li {
+     border-bottom: 3px solid #b9f;
+     padding: 10px 0;
+     COLOR: PINK;
+ }
+ 
+ .list li a {
+     color: #fff;
+     text-decoration: none;
+     padding-right: 5px;
+     dsiplay: block;
+     border: 1px #fff solid;
+     padding: 2px;
+     margin-right: 15px;
+ }
+ 
+ .img .logo {
+     width: 250px;
+ }
+ 
+ .addList {
+     margin-top: 20px;
+ }
+ 
+ .addList .text {
+     padding: 10px;
+     border: 2px solid rgb(73, 41, 10);
+ }
+ 
+ .addList .send {
+     padding: 10px;
+     cursor: pointer;
+     background: #e8a874;
+     border: none;
+ }
+ 
+ html {
+     background: url('https://upload.cc/i1/2019/07/17/7QMPhJ.jpg') center no-repeat;
+     background-size: cover;
+     height: 100%;
+     width: 100%;
+ }

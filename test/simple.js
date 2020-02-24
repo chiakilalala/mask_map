@@ -77,7 +77,7 @@ function countrySelect() {
     let country;
     let countryAry = [];
     for (let i = 0; i < zoneData.length; i++) {
-        let countryStr = zoneData[i].city;
+        let countryStr = zoneData[i].city
         countryAry.push(countryStr);
     }
     // let zoneStr = maskData[i].properties.address.substring(0, 6);

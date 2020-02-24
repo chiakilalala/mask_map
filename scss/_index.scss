@@ -142,7 +142,7 @@ body {
 
 .m-panel {
     height: 100vh;
-    width: 350px;
+    width: 380px;
     position: absolute;
     top: 0;
     left: 0;
@@ -164,7 +164,7 @@ body {
 
 .mask_list {
     display: flex;
-    li {
+    input {
         cursor: pointer;
         border-radius: 4px;
         // border: 1px solid #eaeaea;
@@ -175,7 +175,8 @@ body {
         text-align: center;
         margin-left: 11px;
         list-style: none;
-        &.active {
+        &.active,
+        &:hover {
             color: $white;
             background: $bg_ornage;
             display: inline-block;
@@ -267,6 +268,7 @@ body {
     &-scroll {
         height: calc(100vh - 232px);
         overflow-y: scroll;
+        padding: pxTorem(20px) pxTorem(24px) pxTorem(10px);
         // overflow-x: hidden;
         /* background: #fff; */
         // cursor: pointer;
@@ -278,14 +280,16 @@ body {
     background: #0078A8;
     color: $white;
     position: absolute;
-    top: 0%;
+    top: 2%;
     bottom: 0%;
     font-size: 1rem;
     height: 3rem;
-    right: pxTorem(-18px);
+    right: pxTorem(-51px);
     padding: pxTorem(5px);
     z-index: 9999;
-    border-radius: 0px 10px 10px 0;
+    border-radius: pxTorem(5px);
+    width: pxTorem(50px);
+    height: pxTorem(50px);
     /*這是推拉按鈕*/
 }
 
@@ -305,9 +309,20 @@ body {
     }
 }
 
+.pharmacy-name {
+    padding: pxTorem(5px) 0;
+}
+
 .eumorphism {
     background-color: #e0e5ec;
     box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.search-title {
+    list-style: none;
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: pxTorem(6px);
 }
 
 // 按鈕
@@ -324,9 +339,9 @@ body {
         letter-spacing: 1px;
         outline: none;
         font-size: pxTorem(14px);
-        padding: pxTorem(2px) pxTorem(8px);
-        max-width: 49%;
-        max-height: 44px;
+        padding: pxTorem(2px) pxTorem(3px);
+        max-width: 55%;
+        max-height: 48px;
         display: flex;
         &:first-child {
             border-radius: 5px 0 0 5px;
@@ -406,4 +421,8 @@ body {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.leaflet-top.leaflet-lef {
+    display: none;
 }

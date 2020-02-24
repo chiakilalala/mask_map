@@ -42,4 +42,4 @@ xhr.onload = function() {
         //   )
     }
     map.addLayer(markers);
-}
+};

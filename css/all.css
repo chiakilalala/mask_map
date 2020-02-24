@@ -3995,7 +3995,7 @@ body {
 
 .m-panel {
   height: 100vh;
-  width: 350px;
+  width: 380px;
   position: absolute;
   top: 0;
   left: 0;
@@ -4022,7 +4022,7 @@ body {
   display: flex;
 }
 
-.mask_list li {
+.mask_list input {
   cursor: pointer;
   border-radius: 4px;
   padding: 9px 10px;
@@ -4034,7 +4034,7 @@ body {
   list-style: none;
 }
 
-.mask_list li.active {
+.mask_list input.active, .mask_list input:hover {
   color: #f2f2f2;
   background: #eb7b55;
   display: inline-block;
@@ -4135,6 +4135,7 @@ body {
 .e-search-body-scroll {
   height: calc(100vh - 232px);
   overflow-y: scroll;
+  padding: 1.25rem 1.5rem 0.625rem;
   /* background: #fff; */
 }
 
@@ -4143,14 +4144,16 @@ body {
   background: #0078A8;
   color: #f2f2f2;
   position: absolute;
-  top: 0%;
+  top: 2%;
   bottom: 0%;
   font-size: 1rem;
   height: 3rem;
-  right: -1.125rem;
+  right: -3.1875rem;
   padding: 0.3125rem;
   z-index: 9999;
-  border-radius: 0px 10px 10px 0;
+  border-radius: 0.3125rem;
+  width: 3.125rem;
+  height: 3.125rem;
   /*這是推拉按鈕*/
 }
 
@@ -4177,10 +4180,21 @@ body {
   margin-bottom: 5px;
 }
 
+.pharmacy-name {
+  padding: 0.3125rem 0;
+}
+
 .eumorphism {
   background-color: #e0e5ec;
   -webkit-box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
           box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.search-title {
+  list-style: none;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 0.375rem;
 }
 
 .e-mask-wrap {
@@ -4200,9 +4214,9 @@ body {
   letter-spacing: 1px;
   outline: none;
   font-size: 0.875rem;
-  padding: 0.125rem 0.5rem;
-  max-width: 49%;
-  max-height: 44px;
+  padding: 0.125rem 0.1875rem;
+  max-width: 55%;
+  max-height: 48px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4306,5 +4320,9 @@ body {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+.leaflet-top.leaflet-lef {
+  display: none;
 }
 /*# sourceMappingURL=all.css.map */
